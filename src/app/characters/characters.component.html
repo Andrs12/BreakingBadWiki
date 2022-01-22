@@ -1,3 +1,56 @@
-<p>
-characters works!
-</p>
+<div class="characters">
+  <div *ngFor="let character of characters; let i = index">
+    <div class="card" style="width: 18rem;">
+      <img
+        class="h-75"
+        src="{{ character.img }}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ character.name }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ character.nickname }}</h6>
+        <div class="card-text">
+          <div>Fecha de nacimiento: {{ character.birthday }}</div>
+          <div>
+            Actor:
+            {{ character.portrayed }}
+          </div>
+
+          <div class="accordion" id="{{ i }}">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="{{ i }}">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  Ocupacion
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingOne"
+                data-bs-parent="#"
+                {{
+                i
+                }}
+              >
+                <div class="accordion-body">
+                  <ul *ngFor="let occupation of character.occupation">
+                    <li>{{ occupation }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
